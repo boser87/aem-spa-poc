@@ -15,12 +15,22 @@
 */-->
 <!doctype html>
 <html lang="en">
-    <head>
-        <sly data-sly-include="head.html" data-sly-unwrap/>
-        <sly data-sly-include="headlibs.html" data-sly-unwrap/>
-    </head>
-    <body class="page ${currentPage.template.name}">
-        <sly data-sly-include="main.html" data-sly-unwrap/>
-        <sly data-sly-include="footlibs.html" data-sly-unwrap/>
+	<head>
+		<sly data-sly-include="head.html"></sly>
+		<sly data-sly-include="headlibs.html"></sly>
+	</head>
+	
+	<body class="${currentPage.template.name}">	
+		<sly data-sly-include="header.html"></sly>
+		<div class="container-fluid text-center">    
+ 			 <div class="row content">
+				<sly data-sly-include="side-nav-left.html"></sly>
+        		<sly data-sly-include="main.html"></sly>
+    			<sly data-sly-include="side-nav-right.html"></sly>
+			</div>
+			
+		</div>
+		<sly data-sly-include="footer.html"></sly>	   
+        <sly data-sly-include="footlibs.html"></sly>        
     </body>
 </html>
