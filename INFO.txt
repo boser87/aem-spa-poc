@@ -1,0 +1,9 @@
+GIT repo: https://github.com/boser87/aem-spa-poc.git
+
+Versions:
+
+Bootstrap AEM: Archetype v.10
+AEM 6.2+SP1
+JQuery:
+Angular:
+Bootstrap:

@@ -7,16 +7,16 @@
     ranking="{Long}100">
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="spa-poc/components/structure/page">
+        sling:resourceType="spa-poc/components/pages/page">
         <logo
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="spa-poc/components/structure/logo"/>
+            sling:resourceType="spa-poc/components/pages/page/logo"/>
         <title
             jcr:primaryType="nt:unstructured"
             sling:resourceType="spa-poc/components/content/title"/>
         <topnav
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="spa-poc/components/structure/topnav"/>
+            sling:resourceType="spa-poc/components/pages/page/topnav"/>
         <par
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/parsys">
