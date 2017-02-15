@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:description="Template for initial or main page of the site."
+    jcr:description="Template for customer list page"
     jcr:primaryType="cq:Template"
-    jcr:title="AEM SPA POC Home Page"
-    allowedPaths="[/content/aem-spa-poc]"
+    jcr:title="AEM SPA POC Customer list page"
+    allowedPaths="[/content/aem-spa-poc/.+]"
     ranking="{Long}100">
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="spa-poc/components/pages/page">
+        sling:resourceType="spa-poc/components/pages/customer-list">
         <topnav
             jcr:primaryType="nt:unstructured"
             sling:resourceType="spa-poc/components/pages/page/topnav"/>

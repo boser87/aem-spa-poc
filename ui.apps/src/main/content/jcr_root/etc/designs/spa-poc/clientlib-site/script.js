@@ -37,7 +37,7 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 			if (!$rootScope.usePartials()) {
 				$rootScope.enableHrefPageReload();
 			}else{
-				window.picturefill();//set dynamic images up if they exist on the new partial
+				//window.picturefill();//set dynamic images up if they exist on the new partial
 
 				//we will need to re-init some items that rely on document ready
 				PageMetaData.updateHeaderToReflectPartialData();
@@ -134,7 +134,7 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 				$('#twitterDescription').attr('content',_description);
 			},
 			url: function() { return _url; },
-			setUrl: function(newUrl) { _
+			setUrl: function(newUrl) {
 				_url = newUrl;
 				$('#ogUrl').attr('content',_url);
 			},
