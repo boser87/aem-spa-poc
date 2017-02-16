@@ -17,8 +17,8 @@
 // Server-side JavaScript for the topnav logic
 use(function () {
     var items = [];
-    var root = currentPage.getAbsoluteParent(1);
-    var currentNavPath = currentPage.getAbsoluteParent(2).getPath();
+    var root = pageManager.getPage('/content/aem-spa-poc/home-page');
+    var currentNavPath = currentPage.getPath();
     var it = root.listChildren(new Packages.com.day.cq.wcm.api.PageFilter());
 
     while (it.hasNext()) {
@@ -26,6 +26,8 @@ use(function () {
 
         // No strict comparison, because the types returned from the Java APIs
         // don't strictly match the JavaScript types
+        log.info(page.getPath());
+        log.info(currentNavPath);
         var selected = (page.getPath() == currentNavPath);
 
         items.push({

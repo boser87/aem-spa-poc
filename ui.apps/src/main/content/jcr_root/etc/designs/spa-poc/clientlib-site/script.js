@@ -88,7 +88,14 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 		$stateProvider
 			.state('start', {
 				url: location.pathname,
-				templateUrl: location.pathname.replace('.html', '.partial.html')
+				views: {
+					'navigation': {
+						templateUrl: location.pathname.replace('.html', '.header-partial.html')
+					},
+					'main': {
+						templateUrl: location.pathname.replace('.html', '.main-partial.html')						
+					}
+				}
 			});
 
 		$urlRouterProvider.otherwise(location.pathname);

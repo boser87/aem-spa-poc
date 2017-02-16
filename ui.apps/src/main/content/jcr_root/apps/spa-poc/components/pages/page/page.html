@@ -21,12 +21,13 @@
 	</head>
 
 	<body class="${currentPage.template.name}" ng-app='appSpaPoc' ng-controller='PageCtrl'>	
-		<sly data-sly-include="header.html"></sly>
+		<nav class="navbar navbar-inverse" ui-view="navigation" data-sly-test="${pocPage.isPublisher && !pocPage.isSearchEngine}" data-sly-include="header.html"></nav>
+		<nav class="navbar navbar-inverse" data-sly-test="${!pocPage.isPublisher || pocPage.isSearchEngine}" data-sly-include="header.html"></nav>
 		<div class="container-fluid text-center">    
  			 <div class="row content">
 				<sly data-sly-include="side-nav-left.html"></sly>
 
-    			<div class="col-sm-8 text-left" ui-view data-sly-test="${pocPage.isPublisher && !pocPage.isSearchEngine}"></div>
+    			<div class="col-sm-8 text-left" ui-view="main" data-sly-test="${pocPage.isPublisher && !pocPage.isSearchEngine}"></div>
     			<div data-sly-include="main.html" class="col-sm-8 text-left" data-sly-test="${!pocPage.isPublisher || pocPage.isSearchEngine}"></div>
 
     			<sly data-sly-include="side-nav-right.html"></sly>

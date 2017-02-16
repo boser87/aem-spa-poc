@@ -58,8 +58,19 @@ TODO: clean up the double route names
             writer.object();
             writer.key("url");
             writer.value(pagePath + ".html");
+            writer.key("views");
+            writer.object();
+            writer.key("navigation");
+            writer.object();
             writer.key("templateUrl");
-            writer.value(pagePath + ".partial.html");
+            writer.value(pagePath + ".header-partial.html");
+            writer.endObject();
+            writer.key("main");
+            writer.object();            
+            writer.key("templateUrl");
+            writer.value(pagePath + ".main-partial.html");
+            writer.endObject();
+            writer.endObject();
             writer.endObject();
         }
     }
