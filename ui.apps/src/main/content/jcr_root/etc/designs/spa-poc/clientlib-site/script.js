@@ -90,10 +90,10 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 				url: location.pathname,
 				views: {
 					'navigation': {
-						templateUrl: location.pathname.replace('.html', '.header-partial.html')
+						templateUrl: location.pathname.replace(location.pathname.substring(location.pathname.indexOf('.'), location.pathname.length), '.header-partial.html')
 					},
 					'main': {
-						templateUrl: location.pathname.replace('.html', '.main-partial.html')						
+						templateUrl: location.pathname.replace(location.pathname.substring(location.pathname.indexOf('.'), location.pathname.length), '.main-partial.html')				
 					}
 				}
 			});
