@@ -1,0 +1,12 @@
+<sly data-sly-use.pocPage="POCPage"></sly>
+<meta charset="utf-8" data-sly-use.head="head.js">
+<title>${currentPage.title || currentPage.name}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="${head.keywords}"/>
+<meta name="description" content="${properties.jcr:description}"/>
+
+<meta name="publisher" content="${pocPage.isPublisher}"/>
+<meta name="wcmmode" content="${pocPage.metaWcmMode}">
+<!-- $location in HTML5 mode requires a <base> tag to be present! -->
+<base href="/" />
+<link data-sly-test="${head.favIcon}" rel="icon" href="${head.favIcon}"/>

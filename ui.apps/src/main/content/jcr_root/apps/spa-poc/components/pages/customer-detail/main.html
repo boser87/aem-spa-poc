@@ -1,4 +1,4 @@
 <h1>${currentPage.title}</h1> 
 <h2>${currentPage.path}</h2>
 <sly data-sly-resource="feed"></sly>
-<a href="/content/aem-spa-poc/customer-list.html" class="btn btn-info" role="button">Back to customer list</a>
+<a href="${inheritedPageProperties.customerListPath}.html" class="btn btn-info" role="button">Back to customer list</a>

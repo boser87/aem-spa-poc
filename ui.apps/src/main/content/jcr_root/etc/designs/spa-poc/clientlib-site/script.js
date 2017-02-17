@@ -214,3 +214,27 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 		};
 
 	})
+	
+	.controller('loginFormController', function($scope, $http) {
+
+		$scope.formData = {};
+	
+		$scope.formData.resource = $("form input[name='resource']")[0].value;
+		$scope.formData.j_validate = true;
+	
+		$scope.processForm = function() {
+		  $http({
+		  method  : 'POST',
+		  url     : $("form").data("url"),
+		  data    : $.param($scope.formData),  // pass in data as strings
+		  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+		 })
+		  .success(function(data) {
+		    console.log(data);
+		    location.pathname = "/content/aem-spa-poc/home-page.html";
+		  })
+		  .error(function(data) {
+		    console.log(data);
+		  });
+		}
+	});
