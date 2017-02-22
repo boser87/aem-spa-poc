@@ -28,9 +28,12 @@ TODO: clean up the double route names
           import="com.day.cq.search.Query"
           import="com.day.cq.search.PredicateGroup"
           import="javax.jcr.Session"
-          import="com.day.cq.search.QueryBuilder"%><%
+          import="com.day.cq.search.QueryBuilder"
+          import="com.accenture.aem.core.models.POCPageModel"%><%
 %><%@include file="/libs/foundation/global.jsp" %>
 <%
+    	POCPageModel pocPageModel = slingRequest.adaptTo(POCPageModel.class);
+
     response.setContentType("application/json");
     response.setCharacterEncoding("utf-8");
 
@@ -73,6 +76,61 @@ TODO: clean up the double route names
             writer.endObject();
             writer.endObject();
         }
+    }
+
+    if(pocPageModel.isAdvisor()) {
+    	writer.key("home");
+        writer.object();
+        writer.key("url");
+
+        String advisorHomePagePath = WCMUtils.getInheritedProperty(currentPage,resource.getResourceResolver(),"advisorHomePagePath");
+        writer.value(advisorHomePagePath + ".html");
+
+	        writer.key("views");
+        	writer.object();
+        	writer.key("navigation");
+
+                writer.object();
+                writer.key("templateUrl");
+                writer.value(advisorHomePagePath + ".header-partial.html");
+                writer.endObject();
+
+                writer.key("main");
+                writer.object();            
+                writer.key("templateUrl");
+                writer.value(advisorHomePagePath + ".main-partial.html");
+                writer.endObject();
+
+            writer.endObject();
+            writer.endObject();
+
+
+    } else if(pocPageModel.isCustomer()) {
+    	writer.key("home");
+        writer.object();
+        writer.key("url");
+
+        String customerHomePagePath = WCMUtils.getInheritedProperty(currentPage,resource.getResourceResolver(),"customerHomePagePath");
+        writer.value(customerHomePagePath + ".html");
+
+	        writer.key("views");
+        	writer.object();
+        	writer.key("navigation");
+
+                writer.object();
+                writer.key("templateUrl");
+                writer.value(customerHomePagePath + ".header-partial.html");
+                writer.endObject();
+
+                writer.key("main");
+                writer.object();            
+                writer.key("templateUrl");
+                writer.value(customerHomePagePath + ".main-partial.html");
+                writer.endObject();
+
+            writer.endObject();
+            writer.endObject();
+
     }
 
     writer.endObject();

@@ -5,18 +5,12 @@
 		<sly data-sly-include="headlibs.html"></sly>
 	</head>
 
-	<body class="${currentPage.template.name}" ng-app='appSpaPoc' ng-controller='PageCtrl'>	
-		<div class="container-fluid text-center">    
- 			 <div class="row content">
-				<sly data-sly-include="side-nav-left.html"></sly>
-
-    			<div class="col-sm-8 text-left" ui-view="main" data-sly-test="${pocPage.isPublisher && !pocPage.isSearchEngine}"></div>
-    			<div data-sly-include="main.html" class="col-sm-8 text-left" data-sly-test="${!pocPage.isPublisher || pocPage.isSearchEngine}"></div>
-
-    			<sly data-sly-include="side-nav-right.html"></sly>
-			</div>
-			
-		</div>
+	<body class="${currentPage.template.name}" ng-app='appSpaPoc' ng-controller='PageCtrl' data-user-groups="${pocPage.userGroups}" data-user-id="${pocPage.userID}">	
+		<nav class="navbar navbar-inverse" ui-view="navigation" data-sly-test="${pocPage.isPublisher && !pocPage.isSearchEngine}" data-sly-include="header.html"></nav>
+		<nav class="navbar navbar-inverse" data-sly-test="${!pocPage.isPublisher || pocPage.isSearchEngine}" data-sly-include="header.html"></nav>
+		<div class="container-fluid text-center" ui-view="main" data-sly-test="${pocPage.isPublisher && !pocPage.isSearchEngine}"></div>
+        <div class="container-fluid text-center" data-sly-include="main.html" data-sly-test="${!pocPage.isPublisher || pocPage.isSearchEngine}"></div>
+		<sly data-sly-include="footer.html"></sly>	   
         <sly data-sly-include="footlibs.html"></sly>        
     </body>
 </html>

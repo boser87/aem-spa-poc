@@ -215,11 +215,21 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 
 	})
 	
-	.controller('loginFormController', function($scope, $http) {
+	.provider('runtimeStates', function runtimeStates($stateProvider) {
+	  // runtime dependencies for the service can be injected here, at the provider.$get() function.
+	  this.$get = function($q, $timeout, $state) { // for example
+	    return { 
+	      addState: function(name, state) { 
+	        $stateProvider.state(name, state);
+	      }
+	    }
+	  }
+	})
+	
+	.controller('loginFormController', function($scope, $http, $state, runtimeStates) {
 
 		$scope.formData = {};
 	
-		$scope.formData.resource = $("form input[name='resource']")[0].value;
 		$scope.formData.j_validate = true;
 	
 		$scope.processForm = function() {
@@ -231,7 +241,22 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 		 })
 		  .success(function(data) {
 		    console.log(data);
-		    location.pathname = "/content/aem-spa-poc/home-page.html";
+		    //location.pathname = $("form input[name='resource']")[0].value;
+		    //router.setUpRoutes()
+		    
+            $http.get('/content/aem-spa-poc/jcr:content.routes.json').success(function (collection) {
+                for (var routeName in collection) {
+                    if (!$state.get(routeName)) {
+                        if(typeof routeName != "undefined" && routeName == "home"){
+                        	runtimeStates.addState(routeName, collection[routeName]);
+                            break;
+                        }
+                    }
+                }
+                
+    		    $state.go("home")
+            });
+		    
 		  })
 		  .error(function(data) {
 		    console.log(data);

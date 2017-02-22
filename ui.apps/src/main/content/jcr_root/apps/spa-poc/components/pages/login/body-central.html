@@ -1,0 +1,9 @@
+<h1 class="text-center login-title">Sign in to continue</h1>
+            <div class="account-wall">
+                <form class="form-signin" data-url="${currentPage.path}/j_security_check" ng-submit="processForm()" ng-controller="loginFormController">
+                <input type="hidden" name="j_validate" value="true"/>
+                <input type="text" class="form-control" placeholder="Email" name="j_username" required autofocus ng-model="formData.j_username">
+                <input type="password" class="form-control" placeholder="Password" name="j_password" ng-model="formData.j_password" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </form>
+</div>

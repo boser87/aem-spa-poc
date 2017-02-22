@@ -5,5 +5,5 @@ Versions:
 Bootstrap AEM: Archetype v.10
 AEM 6.2+SP1
 JQuery:
-Angular:
+Angular: 1.3.0
 Bootstrap:

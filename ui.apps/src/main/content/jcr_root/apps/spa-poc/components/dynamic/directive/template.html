@@ -1,0 +1,22 @@
+<div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Transaction id</th>
+        <th>Balance</th>
+        <th>Company</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="entry in entries">
+      <tr>
+        <td>{{entry.index}}</td>
+        <td>{{entry._id}}</td>
+        <td>{{entry.balance}}</td>
+        <td>{{entry.company}}</td>
+        <td>{{entry.address}}</td>
+      </tr>                      
+    </tbody>
+  </table>
+  </div>

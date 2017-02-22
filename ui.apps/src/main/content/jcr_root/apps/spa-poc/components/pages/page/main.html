@@ -1,4 +1,7 @@
-<h1>${currentPage.title}</h1>
-<h2>${currentPage.path}</h2>
-<p>Lorem ipsum...</p> 
-<sly data-sly-resource="par"></sly>
+ 			 <div class="row content">
+				<sly data-sly-include="side-nav-left.html"></sly>
+
+    			<div class="col-sm-8 text-left" data-sly-include="body-central.html"></div>
+
+    			<sly data-sly-include="side-nav-right.html"></sly>
+			</div>
