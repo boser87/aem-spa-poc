@@ -53,14 +53,17 @@ public class POCPage extends WCMUse {
     }
 
     public String getIsPublisher() {
+    	    	
         if(this._sightlyWCMMode.isEdit() || this._sightlyWCMMode.isDesign()) {
             return "false";
         }
         else if(this._sightlyWCMMode.isPreview()){
-                return "true";
+        	// PREVIEW HAS TO RELOAD THE PAGE
+                return "false";
         }else{
             return "true";
         }
+        
     }
 
     public boolean getIsSearchEngine(){

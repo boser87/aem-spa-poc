@@ -1,3 +1,23 @@
+function enableHrefPageReload(){
+	angular.element("a:visible").each(function(index) {
+		$(this).attr("target","_self");
+	});
+
+	angular.element("a:hidden").each(function(index) {
+		$(this).attr("target","_self");
+	});
+}
+
+function isPublisher(){
+	var resolvedMetaTagValue = "false";
+	var elmPublisher = $('meta[name=publisher]').attr("content");
+	if(typeof elmPublisher != 'undefined'){
+		resolvedMetaTagValue = elmPublisher.toLowerCase();
+	}
+
+	return resolvedMetaTagValue;
+}
+
 var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 	.run(function($rootScope,$log,$timeout,PageMetaData){
 
@@ -53,15 +73,7 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 		 * Adds _self to all links in the document to disable partial loading and do full page loading when a link is selected.
 		 * We use this to help navigate while on the authoring server
 		 */
-		$rootScope.enableHrefPageReload = function(){
-			angular.element("a:visible").each(function(index) {
-				$(this).attr("target","_self");
-			});
-
-			angular.element("a:hidden").each(function(index) {
-				$(this).attr("target","_self");
-			});
-		};
+		$rootScope.enableHrefPageReload = enableHrefPageReload;
 
 		/***
 		 * isPublisher
@@ -70,15 +82,7 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 		 *
 		 * @returns {string}
 		 */
-		$rootScope.isPublisher = function(){
-			var resolvedMetaTagValue = "false";
-			var elmPublisher = $('meta[name=publisher]').attr("content");
-			if(typeof elmPublisher != 'undefined'){
-				resolvedMetaTagValue = elmPublisher.toLowerCase();
-			}
-
-			return resolvedMetaTagValue;
-		};
+		$rootScope.isPublisher = isPublisher;
 	})
 
 	/***
@@ -106,6 +110,10 @@ var appSpaPoc = angular.module('appSpaPoc', ['ui.router', 'Routing'])
 		//Set the location provider to html5mode to make the urls pretty
 		$locationProvider.html5Mode(true);
 		$locationProvider.hashPrefix('!');
+		
+		if(isPublisher() == 'false') {
+			enableHrefPageReload();
+		}
 	})
 
 	.service('PageMetaData', function($location) {
